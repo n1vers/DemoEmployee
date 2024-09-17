@@ -93,7 +93,7 @@ public class Person {
         return Objects.hash(FirstName, LastName, birthYear, birthMonth, birthDay, phone, address);
     }
 
-    public int getAge(){
+    public int Age(){
         //
         LocalDate birthDate= LocalDate.of(birthYear, birthMonth, birthDay);
 
