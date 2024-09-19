@@ -5,99 +5,61 @@ import java.util.Scanner;
 public class App {
     private Scanner scanner = new Scanner(System.in);
     private Employee[] employees = new Employee[100];
+    private EmployeeManage employeeManage = new EmployeeManage();
 
-    public void run() {
+    public void run(){
         boolean repeat = true;
-        System.out.println("Демо программа \"Отдел кадров\"");
+        System.out.println("Отдел кадров");
+        System.out.println("----------------------");
         do {
             System.out.println("Список задач:");
-            System.out.println("0. Выйти из программы:");
-            System.out.println("1. Добавить работника:");
-            System.out.println("2. Список работников:");
-            System.out.println("3. Работник по имени и фамилии:");
-            System.out.println("Выберите задачу:");
-            int task = scanner.nextInt();
-            scanner.nextLine();
-
+            System.out.println("0. Выйти из программы");
+            System.out.println("1. Добавить работника");
+            System.out.println("2. Список всех работников");
+            System.out.println("3. Работкник по имени и фамилии");
+            System.out.println("4. Редактировать запись");
+            System.out.print("Выберите задачу: ");
+            int task = scanner.nextInt(); scanner.nextLine();
             switch (task) {
                 case 0:
                     System.out.println("Выход из программы");
                     repeat = false;
                     break;
                 case 1:
-                    System.out.println("Выбрана задача 1");
-                    createEmployee();
+                    System.out.println("Выбрана 1 задача");
+                    Employee employee = employeeManage.create(employeeManage.initialize());
+                    for (int i = 0; i < employees.length; i++) {
+                        if(employees.length == 0){
+                            employees[i] = employee;
+                            break;
+                        }
+                        if (employees[i] != null){continue;}
+                        employees[i] = employee;
+                        break;
+                    }
                     break;
                 case 2:
-                    System.out.println("Выбрана задача 2");
-                    // Здесь должен быть код для отображения списка работников
+                    System.out.println("Выбрана 2 задача");
+                    employeeManage.list(employees);
                     break;
                 case 3:
-                    System.out.println("Выбрана задача 3");
-                    // Здесь должен быть код для поиска работника по имени и фамилии
+                    System.out.println("Выбрана 3 задача");
+                    System.out.print("Имя работника: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Фамилия работника: ");
+                    String surname = scanner.nextLine();
+                    employeeManage.printEmployee(name, surname, employees);
+                    break;
+                case 4:
+                    System.out.println("Выбрана 4 задача");
                     break;
                 default:
-                    System.out.println("Некорректный выбор");
+                    System.out.println("Выбрана несуществующая задача");
+                    break;
             }
-        } while (repeat);
-        System.out.println("До свидания!");
-    }
-
-    private void createEmployee() {
-        System.out.println("Имя:");
-        String firstName = scanner.nextLine();
-        System.out.println("Фамилия:");
-        String lastName = scanner.nextLine();
-        System.out.println("Должность:");
-        String position = scanner.nextLine();
-        System.out.println("Зарплата:");
-        String salary = scanner.nextLine();
-        System.out.println("День рождения:");
-        int birthDay = scanner.nextInt();scanner.nextLine();
-        System.out.println("Месяц рождения:");
-        int birthMonth = scanner.nextInt();scanner.nextLine();
-        System.out.println("Год рождения:");
-        int birthYear = scanner.nextInt();scanner.nextLine();
-        System.out.println("Номер телефона:");
-        String phone = scanner.nextLine();
-        System.out.println("Город:");
-        String city = scanner.nextLine();
-        System.out.println("Улица:");
-        String street = scanner.nextLine();
-        System.out.println("Номер дома:");
-        String house = scanner.nextLine();
-        System.out.println("Номер квартиры:");
-        String room = scanner.nextLine();
-
-        Address address = new Address(city,street, house, room);
-        Person person = new Person(firstName, lastName, birthYear, birthMonth, birthDay, phone, address);
-
-        Employee employee = new Employee();
-        employee.setPosition(position);
-        employee.setSalary(salary);
-        employee.setPerson(person);
-
-        System.out.printf("Работник 1:%n %s %s%n %d лет%n %s%n %s%n Должность: %s%n Зарплата: %s%n",
-                employee.getPerson().getFirstName(),
-                employee.getPerson().getLastName(),
-                employee.getPerson().Age(),
-                employee.getPerson().getPhone(),
-                employee.getPerson().getAddress().getCity(),
-                employee.getPosition(),
-                employee.getSalary()
-        );
-        saveEmployee(employee);
-    }
-    private void saveEmployee(Employee employee) {
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] == null) {
-                employees[i] = employee;
-                System.out.println("Работник успешно сохранен.");
-                return;
-            }
-        }
-        System.out.println("Нет свободного места для нового работника.");
-        }
+        }while (repeat);
+        System.out.println("До свидания! :)");
     }
 
 
+}
