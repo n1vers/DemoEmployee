@@ -4,10 +4,11 @@ import java.util.Scanner;
 
 public class App {
     private Scanner scanner = new Scanner(System.in);
-    Employee[] employees = new Employee[100];
+    private Employee[] employees = new Employee[100];
+
     public void run() {
-        System.out.println("Демо программа \"Отдел кадров\"");
         boolean repeat = true;
+        System.out.println("Демо программа \"Отдел кадров\"");
         do {
             System.out.println("Список задач:");
             System.out.println("0. Выйти из программы:");
@@ -43,29 +44,29 @@ public class App {
     }
 
     private void createEmployee() {
-        System.out.println("Введите имя:");
+        System.out.println("Имя:");
         String firstName = scanner.nextLine();
-        System.out.println("Введите фамилию:");
+        System.out.println("Фамилия:");
         String lastName = scanner.nextLine();
-        System.out.println("Введите должность:");
+        System.out.println("Должность:");
         String position = scanner.nextLine();
-        System.out.println("Введите зарплату:");
+        System.out.println("Зарплата:");
         String salary = scanner.nextLine();
-        System.out.println("Введите день рождения:");
+        System.out.println("День рождения:");
         int birthDay = scanner.nextInt();scanner.nextLine();
-        System.out.println("Введите месяц рождения:");
+        System.out.println("Месяц рождения:");
         int birthMonth = scanner.nextInt();scanner.nextLine();
-        System.out.println("Введите год рождения:");
+        System.out.println("Год рождения:");
         int birthYear = scanner.nextInt();scanner.nextLine();
-        System.out.println("Введите номер телефона:");
+        System.out.println("Номер телефона:");
         String phone = scanner.nextLine();
-        System.out.println("Введите город:");
+        System.out.println("Город:");
         String city = scanner.nextLine();
-        System.out.println("Введите улицу:");
+        System.out.println("Улица:");
         String street = scanner.nextLine();
-        System.out.println("Введите номер дома:");
+        System.out.println("Номер дома:");
         String house = scanner.nextLine();
-        System.out.println("Введите номер квартиры:");
+        System.out.println("Номер квартиры:");
         String room = scanner.nextLine();
 
         Address address = new Address(city,street, house, room);
