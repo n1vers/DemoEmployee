@@ -1,4 +1,4 @@
-package ee.ivkhkee;
+package ee.ivkhkee.model;
 
 import java.time.LocalDate;
 import java.time.Period;

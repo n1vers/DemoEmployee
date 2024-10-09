@@ -1,10 +1,18 @@
-package ee.ivkhkee;
+package ee.ivkhkee.service;
 
-import java.util.Scanner;
+import ee.ivkhkee.model.Address;
+import ee.ivkhkee.model.Employee;
+import ee.ivkhkee.model.Person;
+import ee.ivkhkee.interfaces.Input;
 
 public class EmployeeManage {
 
-    private Scanner scanner = new Scanner(System.in);
+    private Input input; // Используем Input вместо Scanner
+
+    // В конструктор теперь передается Input
+    public EmployeeManage(Input input) {
+        this.input = input;
+    }
 
     public void list(Employee[] employees) {
         System.out.println("Список работников");
@@ -30,29 +38,29 @@ public class EmployeeManage {
     public String[] initialize() {
         String[] employeeAttributes = new String[12];
         System.out.print("Имя: ");
-        employeeAttributes[0] = scanner.nextLine();
+        employeeAttributes[0] = input.nextLine();
         System.out.print("Фамилия: ");
-        employeeAttributes[1] = scanner.nextLine();
+        employeeAttributes[1] = input.nextLine();
         System.out.print("Должность: ");
-        employeeAttributes[2] = scanner.nextLine();
+        employeeAttributes[2] = input.nextLine();
         System.out.print("Зарплата: ");
-        employeeAttributes[3] = scanner.nextLine();
+        employeeAttributes[3] = input.nextLine();
         System.out.print("День рождения: ");
-        employeeAttributes[4] = scanner.nextLine();
+        employeeAttributes[4] = input.nextLine();
         System.out.print("Месяц рождения: ");
-        employeeAttributes[5] = scanner.nextLine();
+        employeeAttributes[5] = input.nextLine();
         System.out.print("Год рождения: ");
-        employeeAttributes[6] = scanner.nextLine();
+        employeeAttributes[6] = input.nextLine();
         System.out.print("Номер телефона: ");
-        employeeAttributes[11] = scanner.nextLine();
+        employeeAttributes[11] = input.nextLine();
         System.out.print("Город: ");
-        employeeAttributes[7] = scanner.nextLine();
+        employeeAttributes[7] = input.nextLine();
         System.out.print("Улица: ");
-        employeeAttributes[8] = scanner.nextLine();
+        employeeAttributes[8] = input.nextLine();
         System.out.print("Дом: ");
-        employeeAttributes[9] = scanner.nextLine();
+        employeeAttributes[9] = input.nextLine();
         System.out.print("Квартира: ");
-        employeeAttributes[10] = scanner.nextLine();
+        employeeAttributes[10] = input.nextLine();
         return employeeAttributes;
     }
 
